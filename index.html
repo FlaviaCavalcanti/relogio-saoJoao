@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>São João em Hellcife</title>
+    <!-- Feito com carinho por Flavia Cavalcanti -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ALTERE AQUI: cores principais da página */
+            --bg-color: #2c1a12;
+            --paper-color: #f4e4bc;
+            --accent-orange: #ff8c00;
+            --accent-red: #e63946;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: #333;
+            font-family: 'Special Elite', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+        }
+
+        .varal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: space-around;
+            overflow: hidden;
+        }
+
+        .bandeira {
+            width: 20px;
+            height: 30px;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+        }
+
+        /* Cores variadas para as bandeirinhas */
+        .b1 { background: #ff4d4d; }
+        .b2 { background: #ffcc00; }
+        .b3 { background: #3399ff; }
+        .b4 { background: #00cc66; }
+        .b5 { background: #ff8000; }
+
+        .container {
+            background-color: var(--paper-color);
+            padding: 2rem;
+            border: 8px solid #5d3a1a;
+            border-radius: 2px;
+            text-align: center;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.4);
+            max-width: 90%;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2rem;
+            color: var(--accent-red);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .clock-section {
+            margin: 20px 0;
+        }
+
+        .time {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 3.5rem;
+            margin: 10px 0;
+            color: #222;
+        }
+
+        .location {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
+            letter-spacing: 2px;
+        }
+
+        .date {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            border-width: 2px dashed #888;
+            padding-top: 10px;
+        }
+
+        .weather {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #d35400;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        /* Altera o tamanho dos emojis */
+        .fogueira {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!--  
+
+    Caso queira mais bandeirinhas, basta copiar e colar as div da bandeira em questão para adicionar mais bandeiras 
+
+    -->
+    <div class="container">
+        <div class="varal">
+            <div class="bandeira b1"></div>
+            <div class="bandeira b2"></div>
+            <div class="bandeira b3"></div>
+            <div class="bandeira b4"></div>
+            <div class="bandeira b5"></div>
+            <div class="bandeira b1"></div>
+            <div class="bandeira b2"></div>
+            <div class="bandeira b3"></div>
+             <div class="bandeira b1"></div>
+            <div class="bandeira b2"></div>
+            <div class="bandeira b3"></div>
+             <div class="bandeira b4"></div>
+            <div class="bandeira b5"></div>
+        </div>
+
+        <!-- Altere aqui para mudar o texto principal do topo -->
+        <h1>🔥 São João em Hellcife ta chegando 🔥</h1>
+        <div class="clock-section">
+            <!--Altere aqui para mudar o texto abaixo do titulo -->
+            <div class="location">TECNOLOGIA DA INFORMAÇÃO E COMUNICAÇÃO</div>
+                    <br>
+
+            <div class="time" id="clock">00:00:00</div>
+        </div>
+
+        <div class="date" id="date">-- de -- de ----</div>
+
+        <div class="weather">
+            <div id="temp">Carregando clima...</div>
+        </div>
+
+        <!-- Para alterar os emojis, basta alterar aqui -->
+        <div class="fogueira">🔥🌽🪗🎉</div>
+    </div>
+
+    <!-- Toda essa parte abaixo o ideial é não alterar, pois são as configurações de hora ou tempo.. Caso deseje alterar algo mude apenas o texto em 'document' -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById('clock').textContent = now.toLocaleTimeString('pt-BR', optionsTime);
+
+            const optionsDate = { day: 'numeric', month: 'long', year: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('pt-BR', optionsDate);
+        }
+
+        // Simulação de clima (Para precisão real, seria necessária uma API Key como OpenWeather)
+        function updateWeather() {
+            const temp = 28 + Math.floor(Math.random() * 5); // Simulação do calor de Recife
+            document.getElementById('temp').textContent = `Hellcife: ${temp}°C - Tá calor, oxente!`; // <- Aqui
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+        updateWeather();
+    </script>
+</body>
+</html>
